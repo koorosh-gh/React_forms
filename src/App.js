@@ -1,37 +1,40 @@
-import React from 'react';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { Form1, Form2, Form3, Form4, Form5 } from './forms';
 
 function App() {
-  const [currentForm, setCurrentForm] = useState(1);
+  const [currentFormIndex, setCurrentFormIndex] = useState(1);
   const [formData, setFormData] = useState([]);
 
   const handleFormSubmit = (data) => {
     const isFormComplete = Object.values(data).every(value => value !== "");
     if (isFormComplete) {
       setFormData(prevData => [...prevData, data]);
-      setCurrentForm(prevForm => prevForm + 1);
-    }
-    else{
+      setCurrentFormIndex(prevIndex => prevIndex + 1);
+    } else {
       alert("Please fill out all the fields");
     }
   };
+
+  const handleBack = () => {
+    setCurrentFormIndex(prevIndex => prevIndex - 1);
+  };
+
   const renderForm = () => {
-    switch (currentForm) {
+    switch (currentFormIndex) {
       case 1:
-        return <Form1 onSubmit={handleFormSubmit}/>;
-        case 2:
-          return <Form2 onSubmit={handleFormSubmit}/>;
-          case 3:
-            return <Form3 onSubmit={handleFormSubmit}/>;
-            case 4:
-              return <Form4 onSubmit={handleFormSubmit}/>;
-              case 5:
-                return <Form5 onSubmit={handleFormSubmit}/>;
+        return <Form1 onSubmit={handleFormSubmit} />;
+      case 2:
+        return <Form2 onSubmit={handleFormSubmit} onBack={handleBack} />;
+      case 3:
+        return <Form3 onSubmit={handleFormSubmit} onBack={handleBack} />;
+      case 4:
+        return <Form4 onSubmit={handleFormSubmit} onBack={handleBack} />;
+      case 5:
+        return <Form5 onSubmit={handleFormSubmit} onBack={handleBack} />;
       default:
         return null;
     }
-  }
+  };
 
   return (
     <div>

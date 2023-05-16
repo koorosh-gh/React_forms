@@ -13,7 +13,6 @@ export const Form1 = ({ onSubmit }) => {
     event.preventDefault();
     onSubmit(inputs);
   };
-  
   return (
     <form onSubmit={handleSubmit}>
       <h2>Form1</h2>
@@ -39,7 +38,7 @@ export const Form1 = ({ onSubmit }) => {
     </form>
   );
 }
-export const Form2 = ({ onSubmit }) => {
+export const Form2 = ({ onSubmit, onBack }) => {
 
   const [inputs, setInputs] = useState({});
   
@@ -53,7 +52,10 @@ export const Form2 = ({ onSubmit }) => {
     event.preventDefault();
     onSubmit(inputs);
   };
-  
+  const handleBackClick = (event) => {
+    event.preventDefault();
+    onBack();
+  }
   return (
     <form onSubmit={handleSubmit}>
       <h2>Form2</h2>
@@ -84,11 +86,12 @@ export const Form2 = ({ onSubmit }) => {
           required
         />
       </label>
+      <button onClick={handleBackClick}>Back</button>
       <input type="submit" value="Next" disabled={Object.values(inputs).some(value => value === "")} />
     </form>
   );
 }
-export const Form3 = ({ onSubmit }) => {
+export const Form3 = ({ onSubmit, onBack}) => {
 
   const [inputs, setInputs] = useState({});
   
@@ -102,6 +105,10 @@ export const Form3 = ({ onSubmit }) => {
     event.preventDefault();
     onSubmit(inputs);
   };
+  const handleBackClick = (event) => {
+    event.preventDefault();
+    onBack();
+  }
   
   return (
     <form onSubmit={handleSubmit}>
@@ -176,11 +183,12 @@ export const Form3 = ({ onSubmit }) => {
             </li>
         </ul>
       </label>
+      <button onClick={handleBackClick}>Back</button>
       <input type="submit" value="Next" disabled={Object.values(inputs).some(value => value === "")} />
     </form>
   );
 }
-export const Form4 = ({ onSubmit }) => {
+export const Form4 = ({ onSubmit, onBack }) => {
 
   const [inputs, setInputs] = useState({});
   
@@ -194,6 +202,10 @@ export const Form4 = ({ onSubmit }) => {
     event.preventDefault();
     onSubmit(inputs);
   };
+  const handleBackClick = (event) => {
+    event.preventDefault();
+    onBack();
+  }
   
   return (
     <form onSubmit={handleSubmit}>
@@ -316,11 +328,12 @@ export const Form4 = ({ onSubmit }) => {
             </li>
         </ul>
       </label>
+      <button onClick={handleBackClick}>Back</button>
       <input type="submit" value="Next" disabled={Object.values(inputs).some(value => value === "")} />
     </form>
   );
 }
-export const Form5 = ({ onSubmit }) => {
+export const Form5 = ({ onSubmit, onBack }) => {
 
   const [inputs, setInputs] = useState({});
   
@@ -334,6 +347,10 @@ export const Form5 = ({ onSubmit }) => {
     event.preventDefault();
     onSubmit(inputs);
   };
+  const handleBackClick = (event) => {
+    event.preventDefault();
+    onBack();
+  }
   
   return (
     <form onSubmit={handleSubmit}>
@@ -365,6 +382,7 @@ export const Form5 = ({ onSubmit }) => {
           required
         />
       </label>
+      <button onClick={handleBackClick}>Back</button>
       <input type="submit" value="Next" disabled={Object.values(inputs).some(value => value === "")} />
     </form>
   );
