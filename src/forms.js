@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import './forms.css';
+
 export const Form1 = ({ onSubmit }) => {
   const [inputs, setInputs] = useState({});
   const handleChange = (event) => {
@@ -22,6 +23,7 @@ export const Form1 = ({ onSubmit }) => {
           name="userName"
           value={inputs.userName || ""}
           onChange={handleChange}
+          required
         />
       </label>
       <label>Enter your email:
@@ -30,9 +32,10 @@ export const Form1 = ({ onSubmit }) => {
           name="Email"
           value={inputs.Email || ""}
           onChange={handleChange}
+          required
         />
       </label>
-      <input type="submit" value="next"/>
+      <input type="submit" value="Next" disabled={Object.values(inputs).some(value => value === "")} />
     </form>
   );
 }
@@ -60,6 +63,7 @@ export const Form2 = ({ onSubmit }) => {
           name="Name"
           value={inputs.Name || ""}
           onChange={handleChange}
+          required
         />
       </label>
       <label>Enter your surname:
@@ -68,6 +72,7 @@ export const Form2 = ({ onSubmit }) => {
           name="surName"
           value={inputs.surName || ""}
           onChange={handleChange}
+          required
         />
       </label>
       <label>Enter your date of birth:
@@ -76,9 +81,10 @@ export const Form2 = ({ onSubmit }) => {
           name="birthDate" 
           value={inputs.birthDate || ""}
           onChange={handleChange}
+          required
         />
       </label>
-      <input type="submit" value="next"/>
+      <input type="submit" value="Next" disabled={Object.values(inputs).some(value => value === "")} />
     </form>
   );
 }
@@ -102,18 +108,20 @@ export const Form3 = ({ onSubmit }) => {
       <h2>Form3</h2>
       <label>Enter your height:
         <input 
-          type="text"
+          type="number"
           name="Height"
           value={inputs.Height || ""}
           onChange={handleChange}
+          required
         />
       </label>
       <label>Enter your weight:
         <input
-          type="text"
+          type="number"
           name="Weight"
           value={inputs.Weight || ""}
           onChange={handleChange}
+          required
         />
       </label>
       <label>Enter your color skin:
@@ -168,7 +176,7 @@ export const Form3 = ({ onSubmit }) => {
             </li>
         </ul>
       </label>
-      <input type="submit" value="Next"/>
+      <input type="submit" value="Next" disabled={Object.values(inputs).some(value => value === "")} />
     </form>
   );
 }
@@ -196,6 +204,7 @@ export const Form4 = ({ onSubmit }) => {
           name="eyeColor"
           value={inputs.eyeColor || ""}
           onChange={handleChange}
+          required
         />
       </label>
       <label>Enter your hair color:
@@ -204,6 +213,7 @@ export const Form4 = ({ onSubmit }) => {
           name="hairColor"
           value={inputs.hairColor || ""}
           onChange={handleChange}
+          required
         />
       </label>
       <label>Enter your blood type:
@@ -214,7 +224,7 @@ export const Form4 = ({ onSubmit }) => {
                     type="radio"
                     name="bloodType"
                     value="Apos"
-                    checked={inputs.skin === "Apos"}
+                    checked={inputs.bloodType === "Apos"}
                     onChange={handleChange}
                     />
                     A+
@@ -226,7 +236,7 @@ export const Form4 = ({ onSubmit }) => {
                     type="radio"
                     name="bloodType"
                     value="Amin"
-                    checked={inputs.skin === "Amin"}
+                    checked={inputs.bloodType === "Amin"}
                     onChange={handleChange}
                     />
                     A-
@@ -238,7 +248,7 @@ export const Form4 = ({ onSubmit }) => {
                     type="radio"
                     name="bloodType"
                     value="Bpos"
-                    checked={inputs.skin === "Bpos"}
+                    checked={inputs.bloodType === "Bpos"}
                     onChange={handleChange}
                     />
                     B+
@@ -250,7 +260,7 @@ export const Form4 = ({ onSubmit }) => {
                     type="radio"
                     name="bloodType"
                     value="Bmin"
-                    checked={inputs.skin === "Bmin"}
+                    checked={inputs.bloodType === "Bmin"}
                     onChange={handleChange}
                     />
                     B-
@@ -262,7 +272,7 @@ export const Form4 = ({ onSubmit }) => {
                     type="radio"
                     name="bloodType"
                     value="Opos"
-                    checked={inputs.skin === "Opos"}
+                    checked={inputs.bloodType === "Opos"}
                     onChange={handleChange}
                     />
                     O+
@@ -274,7 +284,7 @@ export const Form4 = ({ onSubmit }) => {
                     type="radio"
                     name="bloodType"
                     value="Omin"
-                    checked={inputs.skin === "Omin"}
+                    checked={inputs.bloodType === "Omin"}
                     onChange={handleChange}
                     />
                     O-
@@ -286,7 +296,7 @@ export const Form4 = ({ onSubmit }) => {
                     type="radio"
                     name="bloodType"
                     value="ABmin"
-                    checked={inputs.skin === "ABmin"}
+                    checked={inputs.bloodType === "ABmin"}
                     onChange={handleChange}
                     />
                     AB-
@@ -298,7 +308,7 @@ export const Form4 = ({ onSubmit }) => {
                     type="radio"
                     name="bloodType"
                     value="ABpos"
-                    checked={inputs.skin === "ABpos"}
+                    checked={inputs.bloodType === "ABpos"}
                     onChange={handleChange}
                     />
                     AB+
@@ -306,7 +316,7 @@ export const Form4 = ({ onSubmit }) => {
             </li>
         </ul>
       </label>
-      <input type="submit" value="Next"/>
+      <input type="submit" value="Next" disabled={Object.values(inputs).some(value => value === "")} />
     </form>
   );
 }
@@ -334,6 +344,7 @@ export const Form5 = ({ onSubmit }) => {
           name="shoeSize"
           value={inputs.shoeSize || ""}
           onChange={handleChange}
+          required
         />
       </label>
       <label>Enter your favorite color:
@@ -342,6 +353,7 @@ export const Form5 = ({ onSubmit }) => {
           name="favColor"
           value={inputs.favColor || ""}
           onChange={handleChange}
+          required
         />
       </label>
       <label>Enter your favorite drink:
@@ -350,9 +362,10 @@ export const Form5 = ({ onSubmit }) => {
           name="favDrink"
           value={inputs.favDrink || ""}
           onChange={handleChange}
+          required
         />
       </label>
-      <input type="submit" value="Next"/>
+      <input type="submit" value="Next" disabled={Object.values(inputs).some(value => value === "")} />
     </form>
   );
 }

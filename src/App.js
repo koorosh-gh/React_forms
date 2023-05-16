@@ -1,5 +1,4 @@
 import React from 'react';
-import { ReactDOM } from 'react';
 import { useState } from 'react';
 import { Form1, Form2, Form3, Form4, Form5 } from './forms';
 
@@ -8,9 +7,16 @@ function App() {
   const [formData, setFormData] = useState([]);
 
   const handleFormSubmit = (data) => {
-    setFormData(prevData => [...prevData, data]);
-    setCurrentForm(prevForm => prevForm + 1);
+    const isFormComplete = Object.values(data).every(value => value !== "");
+    if (isFormComplete) {
+      setFormData(prevData => [...prevData, data]);
+      setCurrentForm(prevForm => prevForm + 1);
+    }
+    else{
+      alert("Please fill out all the fields");
+    }
   };
+  
 
   return (
     <div>
