@@ -38,9 +38,9 @@ export const Form1 = ({ onSubmit }) => {
     </form>
   );
 }
-export const Form2 = ({ onSubmit, onBack }) => {
+export const Form2 = ({ onSubmit, onBack, initialData }) => {
 
-  const [inputs, setInputs] = useState({});
+  const [inputs, setInputs] = useState(initialData);
   
   const handleChange = (event) => {
     const name = event.target.name;
@@ -91,9 +91,9 @@ export const Form2 = ({ onSubmit, onBack }) => {
     </form>
   );
 }
-export const Form3 = ({ onSubmit, onBack}) => {
+export const Form3 = ({ onSubmit, onBack, initialData}) => {
 
-  const [inputs, setInputs] = useState({});
+  const [inputs, setInputs] = useState(initialData);
   
   const handleChange = (event) => {
     const name = event.target.name;
@@ -188,9 +188,9 @@ export const Form3 = ({ onSubmit, onBack}) => {
     </form>
   );
 }
-export const Form4 = ({ onSubmit, onBack }) => {
+export const Form4 = ({ onSubmit, onBack, initialData }) => {
 
-  const [inputs, setInputs] = useState({});
+  const [inputs, setInputs] = useState(initialData);
   
   const handleChange = (event) => {
     const name = event.target.name;
@@ -333,9 +333,9 @@ export const Form4 = ({ onSubmit, onBack }) => {
     </form>
   );
 }
-export const Form5 = ({ onSubmit, onBack }) => {
+export const Form5 = ({ onSubmit, onBack, initialData}) => {
 
-  const [inputs, setInputs] = useState({});
+  const [inputs, setInputs] = useState(initialData);
   
   const handleChange = (event) => {
     const name = event.target.name;

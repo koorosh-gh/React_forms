@@ -8,7 +8,15 @@ function App() {
   const handleFormSubmit = (data) => {
     const isFormComplete = Object.values(data).every(value => value !== "");
     if (isFormComplete) {
-      setFormData(prevData => [...prevData, data]);
+      if (currentFormIndex <= formData.length) {
+        setFormData((prevData) => {
+          const newData = [...prevData];
+          newData[currentFormIndex - 1] = data;
+          return newData;
+        });
+      } else{
+        setFormData((prevData) => [...prevData, data]);
+      }
       setCurrentFormIndex(prevIndex => prevIndex + 1);
     } else {
       alert("Please fill out all the fields");
@@ -20,17 +28,18 @@ function App() {
   };
 
   const renderForm = () => {
+    const initialData = formData[currentFormIndex - 1] || {};
     switch (currentFormIndex) {
       case 1:
         return <Form1 onSubmit={handleFormSubmit} />;
       case 2:
-        return <Form2 onSubmit={handleFormSubmit} onBack={handleBack} />;
+        return <Form2 onSubmit={handleFormSubmit} onBack={handleBack} initialData={initialData}/>;
       case 3:
-        return <Form3 onSubmit={handleFormSubmit} onBack={handleBack} />;
+        return <Form3 onSubmit={handleFormSubmit} onBack={handleBack} initialData={initialData}/>;
       case 4:
-        return <Form4 onSubmit={handleFormSubmit} onBack={handleBack} />;
+        return <Form4 onSubmit={handleFormSubmit} onBack={handleBack} initialData={initialData}/>;
       case 5:
-        return <Form5 onSubmit={handleFormSubmit} onBack={handleBack} />;
+        return <Form5 onSubmit={handleFormSubmit} onBack={handleBack} initialData={initialData}/>;
       default:
         return null;
     }
