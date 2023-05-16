@@ -1,43 +1,33 @@
-import { useState } from 'react';
+import { useFormInput, handleSubmit } from './FormUtils';
 import './forms.css';
 
-export const Form3 = ({ onSubmit, onBack, initialData}) => {
+export const Form3 = ({ onSubmit, onBack, initialData }) => {
+  const { value, handleInputChange, handleBackClick } = useFormInput(initialData);
 
-    const [inputs, setInputs] = useState(initialData);
-    
-    const handleInputChange = (e) => {
-        const { name, value } = e.target;
-        setInputs((prevInputs) => ({ ...prevInputs, [name]: value }));
-      };
-    
-      const handleSubmit = (e) => {
-        e.preventDefault();
-        onSubmit(inputs);
-      };
-    const handleBackClick = (e) => {
-      e.preventDefault();
-      onBack();
-    }
-    return (
-      <form onSubmit={handleSubmit}>
-        <fieldset>
-        <legend>
-        Form3
-        </legend>
-        <label>Enter your height:
+  const handleFormSubmit = (e) => {
+    handleSubmit(e, value, onSubmit);
+  };
+
+  return (
+    <form onSubmit={handleFormSubmit}>
+      <fieldset>
+        <legend>Form3</legend>
+        <label>
+          Enter your height:
           <input 
             type="number"
             name="Height"
-            value={inputs.Height || ""}
+            value={value.Height || ""}
             onChange={handleInputChange}
             required
           />
         </label>
-        <label>Enter your weight:
+        <label>
+          Enter your weight:
           <input
             type="number"
             name="Weight"
-            value={inputs.Weight || ""}
+            value={value.Weight || ""}
             onChange={handleInputChange}
             required
           />
@@ -50,7 +40,7 @@ export const Form3 = ({ onSubmit, onBack, initialData}) => {
                       type="radio"
                       name="skin"
                       value="red"
-                      checked={inputs.skin === "red"}
+                      checked={value.skin === "red"}
                       onChange={handleInputChange}
                       />
                       red
@@ -62,7 +52,7 @@ export const Form3 = ({ onSubmit, onBack, initialData}) => {
                       type="radio"
                       name="skin"
                       value="blue"
-                      checked={inputs.skin === "blue"}
+                      checked={value.skin === "blue"}
                       onChange={handleInputChange}
                       />
                       blue
@@ -74,7 +64,7 @@ export const Form3 = ({ onSubmit, onBack, initialData}) => {
                       type="radio"
                       name="skin"
                       value="green"
-                      checked={inputs.skin === "green"}
+                      checked={value.skin === "green"}
                       onChange={handleInputChange}
                       />
                       green
@@ -86,7 +76,7 @@ export const Form3 = ({ onSubmit, onBack, initialData}) => {
                       type="radio"
                       name="skin"
                       value="white"
-                      checked={inputs.skin === "white"}
+                      checked={value.skin === "white"}
                       onChange={handleInputChange}
                       />
                       white
@@ -94,9 +84,9 @@ export const Form3 = ({ onSubmit, onBack, initialData}) => {
               </li>
           </ul>
         </label>
-        <button onClick={handleBackClick}>Back</button>
+        <button onClick={(e) => handleBackClick(e, onBack)}>Back</button>
         <button type="submit">Next</button>
-        </fieldset>
-      </form>
-    );
-  }
+      </fieldset>
+    </form>
+  );
+};

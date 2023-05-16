@@ -1,61 +1,50 @@
-import { useState } from 'react';
+import { useFormInput, handleSubmit } from './FormUtils';
 import './forms.css';
 
-export const Form5 = ({ onSubmit, onBack, initialData}) => {
+export const Form5 = ({ onSubmit, onBack, initialData }) => {
+  const { value, handleInputChange, handleBackClick } = useFormInput(initialData);
 
-    const [inputs, setInputs] = useState(initialData);
-    
-    const handleInputChange = (e) => {
-        const { name, value } = e.target;
-        setInputs((prevInputs) => ({ ...prevInputs, [name]: value }));
-      };
-    
-      const handleSubmit = (e) => {
-        e.preventDefault();
-        onSubmit(inputs);
-      };
-    const handleBackClick = (e) => {
-      e.preventDefault();
-      onBack();
-    }
-    
-    return (
-      <form onSubmit={handleSubmit}>
-        <fieldset>
-            <legend>
-                Form5
-            </legend>
-        <label>Enter your shoe size:
+  const handleFormSubmit = (e) => {
+    handleSubmit(e, value, onSubmit);
+  };
+
+  return (
+    <form onSubmit={handleFormSubmit}>
+      <fieldset>
+        <legend>Form5</legend>
+        <label>
+          Enter your shoe size:
           <input 
             type="number"
             name="shoeSize"
-            value={inputs.shoeSize || ""}
+            value={value.shoeSize || ""}
             onChange={handleInputChange}
             required
           />
         </label>
-        <label>Enter your favorite color:
+        <label>
+          Enter your favorite color:
           <input
             type="text"
             name="favColor"
-            value={inputs.favColor || ""}
+            value={value.favColor || ""}
             onChange={handleInputChange}
             required
           />
         </label>
-        <label>Enter your favorite drink:
+        <label>
+          Enter your favorite drink:
           <input
             type="text"
             name="favDrink"
-            value={inputs.favDrink || ""}
+            value={value.favDrink || ""}
             onChange={handleInputChange}
             required
           />
         </label>
-        <button onClick={handleBackClick}>Back</button>
+        <button onClick={(e) => handleBackClick(e, onBack)}>Back</button>
         <button type="submit">Next</button>
-        </fieldset>
-      </form>
-    );
-  }
-  
+      </fieldset>
+    </form>
+  );
+};

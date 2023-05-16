@@ -1,30 +1,33 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { useFormInput, handleSubmit } from './FormUtils';
 import './forms.css';
 
 export const Form1 = ({ onSubmit, initialData }) => {
-  const [inputs, setInputs] = useState(initialData);
-
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setInputs((prevInputs) => ({ ...prevInputs, [name]: value }));
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    onSubmit(inputs);
-  };
+  const { value, handleInputChange } = useFormInput(initialData);
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={(e) => handleSubmit(e, value, onSubmit)}>
       <fieldset>
         <legend>Form 1</legend>
         <label>
           Username:
-          <input type="text" name="Username" value={inputs.Username || ''} onChange={handleInputChange} />
+          <input
+            type="text"
+            name="Username"
+            value={value.Username || ''}
+            onChange={handleInputChange}
+            required
+          />
         </label>
         <label>
           Email:
-          <input type="email" name="Email" value={inputs.Email || ''} onChange={handleInputChange} />
+          <input
+            type="email"
+            name="Email"
+            value={value.Email || ''}
+            onChange={handleInputChange}
+            required
+          />
         </label>
         <button type="submit">Next</button>
       </fieldset>

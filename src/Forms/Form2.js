@@ -1,59 +1,47 @@
-import { useState } from 'react';
+import React from 'react';
+import { useFormInput, handleSubmit } from './FormUtils';
 import './forms.css';
 
 export const Form2 = ({ onSubmit, onBack, initialData }) => {
+  const { value, handleInputChange, handleBackClick } = useFormInput(initialData);
 
-    const [inputs, setInputs] = useState(initialData);
-    
-    const handleInputChange = (e) => {
-        const { name, value } = e.target;
-        setInputs((prevInputs) => ({ ...prevInputs, [name]: value }));
-      };
-    
-      const handleSubmit = (e) => {
-        e.preventDefault();
-        onSubmit(inputs);
-      };
-    const handleBackClick = (e) => {
-      e.preventDefault();
-      onBack();
-    }
-    return (
-      <form onSubmit={handleSubmit}>
-        <fieldset>
-        <legend>
-            Form2
-        </legend>
-        <label>Enter your name:
-          <input 
+  return (
+    <form onSubmit={(e) => handleSubmit(e, value, onSubmit)}>
+      <fieldset>
+        <legend>Form2</legend>
+        <label>
+          Enter your name:
+          <input
             type="text"
             name="Name"
-            value={inputs.Name || ""}
+            value={value.Name || ''}
             onChange={handleInputChange}
             required
           />
         </label>
-        <label>Enter your surname:
+        <label>
+          Enter your surname:
           <input
             type="text"
             name="surName"
-            value={inputs.surName || ""}
+            value={value.surName || ''}
             onChange={handleInputChange}
             required
           />
         </label>
-        <label>Enter your date of birth:
+        <label>
+          Enter your date of birth:
           <input
             type="date"
-            name="birthDate" 
-            value={inputs.birthDate || ""}
+            name="birthDate"
+            value={value.birthDate || ''}
             onChange={handleInputChange}
             required
           />
         </label>
-        <button onClick={handleBackClick}>Back</button>
+        <button onClick={(e) => handleBackClick(e, onBack)}>Back</button>
         <button type="submit">Next</button>
-        </fieldset>
-      </form>
-    );
-  }
+      </fieldset>
+    </form>
+  );
+};
