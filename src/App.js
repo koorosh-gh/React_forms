@@ -16,26 +16,26 @@ function App() {
       alert("Please fill out all the fields");
     }
   };
-  
+  const renderForm = () => {
+    switch (currentForm) {
+      case 1:
+        return <Form1 onSubmit={handleFormSubmit}/>;
+        case 2:
+          return <Form2 onSubmit={handleFormSubmit}/>;
+          case 3:
+            return <Form3 onSubmit={handleFormSubmit}/>;
+            case 4:
+              return <Form4 onSubmit={handleFormSubmit}/>;
+              case 5:
+                return <Form5 onSubmit={handleFormSubmit}/>;
+      default:
+        return null;
+    }
+  }
 
   return (
     <div>
-      {currentForm === 1 && (
-        <Form1 onSubmit={handleFormSubmit} />
-      )}
-      {currentForm === 2 && (
-        <Form2 onSubmit={handleFormSubmit} />
-      )}
-      {currentForm === 3 && (
-        <Form3 onSubmit={handleFormSubmit} />
-      )}
-      {currentForm === 4 && (
-        <Form4 onSubmit={handleFormSubmit} />
-      )}
-      {currentForm === 5 && (
-        <Form5 onSubmit={handleFormSubmit} />
-      )}
-
+      {renderForm()}
       <h3>Form Data:</h3>
       <ul>
         {formData.map((data, index) => (
