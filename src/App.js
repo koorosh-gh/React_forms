@@ -35,7 +35,7 @@ function App() {
     const initialData = formData[currentFormIndex - 1] || {};
     switch (currentFormIndex) {
       case 1:
-        return <Form1 onSubmit={handleFormSubmit} />;
+        return <Form1 onSubmit={handleFormSubmit} initialData={initialData}/>;
       case 2:
         return <Form2 onSubmit={handleFormSubmit} onBack={handleBack} initialData={initialData}/>;
       case 3:

@@ -5,30 +5,31 @@ export const Form4 = ({ onSubmit, onBack, initialData }) => {
 
     const [inputs, setInputs] = useState(initialData);
     
-    const handleChange = (event) => {
-      const name = event.target.name;
-      const value = event.target.value;
-      setInputs(values => ({ ...values, [name]: value }));
-    };
+    const handleInputChange = (e) => {
+        const { name, value } = e.target;
+        setInputs((prevInputs) => ({ ...prevInputs, [name]: value }));
+      };
     
-    const handleSubmit = (event) => {
-      event.preventDefault();
-      onSubmit(inputs);
-    };
-    const handleBackClick = (event) => {
-      event.preventDefault();
+      const handleSubmit = (e) => {
+        e.preventDefault();
+        onSubmit(inputs);
+      };
+    const handleBackClick = (e) => {
+      e.preventDefault();
       onBack();
     }
-    
     return (
       <form onSubmit={handleSubmit}>
-        <h2>Form4</h2>
+        <fieldset>
+        <legend>
+            Form4
+        </legend>
         <label>Enter your eye color:
           <input 
             type="text"
             name="eyeColor"
             value={inputs.eyeColor || ""}
-            onChange={handleChange}
+            onChange={handleInputChange}
             required
           />
         </label>
@@ -37,7 +38,7 @@ export const Form4 = ({ onSubmit, onBack, initialData }) => {
             type="text"
             name="hairColor"
             value={inputs.hairColor || ""}
-            onChange={handleChange}
+            onChange={handleInputChange}
             required
           />
         </label>
@@ -50,7 +51,7 @@ export const Form4 = ({ onSubmit, onBack, initialData }) => {
                       name="bloodType"
                       value="Apos"
                       checked={inputs.bloodType === "Apos"}
-                      onChange={handleChange}
+                      onChange={handleInputChange}
                       />
                       A+
                   </label>
@@ -62,7 +63,7 @@ export const Form4 = ({ onSubmit, onBack, initialData }) => {
                       name="bloodType"
                       value="Amin"
                       checked={inputs.bloodType === "Amin"}
-                      onChange={handleChange}
+                      onChange={handleInputChange}
                       />
                       A-
                   </label>
@@ -74,7 +75,7 @@ export const Form4 = ({ onSubmit, onBack, initialData }) => {
                       name="bloodType"
                       value="Bpos"
                       checked={inputs.bloodType === "Bpos"}
-                      onChange={handleChange}
+                      onChange={handleInputChange}
                       />
                       B+
                   </label>
@@ -86,7 +87,7 @@ export const Form4 = ({ onSubmit, onBack, initialData }) => {
                       name="bloodType"
                       value="Bmin"
                       checked={inputs.bloodType === "Bmin"}
-                      onChange={handleChange}
+                      onChange={handleInputChange}
                       />
                       B-
                   </label>
@@ -98,7 +99,7 @@ export const Form4 = ({ onSubmit, onBack, initialData }) => {
                       name="bloodType"
                       value="Opos"
                       checked={inputs.bloodType === "Opos"}
-                      onChange={handleChange}
+                      onChange={handleInputChange}
                       />
                       O+
                   </label>
@@ -110,7 +111,7 @@ export const Form4 = ({ onSubmit, onBack, initialData }) => {
                       name="bloodType"
                       value="Omin"
                       checked={inputs.bloodType === "Omin"}
-                      onChange={handleChange}
+                      onChange={handleInputChange}
                       />
                       O-
                   </label>
@@ -122,7 +123,7 @@ export const Form4 = ({ onSubmit, onBack, initialData }) => {
                       name="bloodType"
                       value="ABmin"
                       checked={inputs.bloodType === "ABmin"}
-                      onChange={handleChange}
+                      onChange={handleInputChange}
                       />
                       AB-
                   </label>
@@ -134,7 +135,7 @@ export const Form4 = ({ onSubmit, onBack, initialData }) => {
                       name="bloodType"
                       value="ABpos"
                       checked={inputs.bloodType === "ABpos"}
-                      onChange={handleChange}
+                      onChange={handleInputChange}
                       />
                       AB+
                   </label>
@@ -142,7 +143,8 @@ export const Form4 = ({ onSubmit, onBack, initialData }) => {
           </ul>
         </label>
         <button onClick={handleBackClick}>Back</button>
-        <input type="submit" value="Next" disabled={Object.values(inputs).some(value => value === "")} />
+        <button type="submit">Next</button>
+        </fieldset>
       </form>
     );
   }

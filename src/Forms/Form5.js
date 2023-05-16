@@ -5,30 +5,32 @@ export const Form5 = ({ onSubmit, onBack, initialData}) => {
 
     const [inputs, setInputs] = useState(initialData);
     
-    const handleChange = (event) => {
-      const name = event.target.name;
-      const value = event.target.value;
-      setInputs(values => ({ ...values, [name]: value }));
-    };
+    const handleInputChange = (e) => {
+        const { name, value } = e.target;
+        setInputs((prevInputs) => ({ ...prevInputs, [name]: value }));
+      };
     
-    const handleSubmit = (event) => {
-      event.preventDefault();
-      onSubmit(inputs);
-    };
-    const handleBackClick = (event) => {
-      event.preventDefault();
+      const handleSubmit = (e) => {
+        e.preventDefault();
+        onSubmit(inputs);
+      };
+    const handleBackClick = (e) => {
+      e.preventDefault();
       onBack();
     }
     
     return (
       <form onSubmit={handleSubmit}>
-        <h2>Form5</h2>
+        <fieldset>
+            <legend>
+                Form5
+            </legend>
         <label>Enter your shoe size:
           <input 
             type="number"
             name="shoeSize"
             value={inputs.shoeSize || ""}
-            onChange={handleChange}
+            onChange={handleInputChange}
             required
           />
         </label>
@@ -37,7 +39,7 @@ export const Form5 = ({ onSubmit, onBack, initialData}) => {
             type="text"
             name="favColor"
             value={inputs.favColor || ""}
-            onChange={handleChange}
+            onChange={handleInputChange}
             required
           />
         </label>
@@ -46,12 +48,13 @@ export const Form5 = ({ onSubmit, onBack, initialData}) => {
             type="text"
             name="favDrink"
             value={inputs.favDrink || ""}
-            onChange={handleChange}
+            onChange={handleInputChange}
             required
           />
         </label>
         <button onClick={handleBackClick}>Back</button>
-        <input type="submit" value="Next" disabled={Object.values(inputs).some(value => value === "")} />
+        <button type="submit">Next</button>
+        </fieldset>
       </form>
     );
   }

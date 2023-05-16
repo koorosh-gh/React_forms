@@ -5,30 +5,31 @@ export const Form3 = ({ onSubmit, onBack, initialData}) => {
 
     const [inputs, setInputs] = useState(initialData);
     
-    const handleChange = (event) => {
-      const name = event.target.name;
-      const value = event.target.value;
-      setInputs(values => ({ ...values, [name]: value }));
-    };
+    const handleInputChange = (e) => {
+        const { name, value } = e.target;
+        setInputs((prevInputs) => ({ ...prevInputs, [name]: value }));
+      };
     
-    const handleSubmit = (event) => {
-      event.preventDefault();
-      onSubmit(inputs);
-    };
-    const handleBackClick = (event) => {
-      event.preventDefault();
+      const handleSubmit = (e) => {
+        e.preventDefault();
+        onSubmit(inputs);
+      };
+    const handleBackClick = (e) => {
+      e.preventDefault();
       onBack();
     }
-    
     return (
       <form onSubmit={handleSubmit}>
-        <h2>Form3</h2>
+        <fieldset>
+        <legend>
+        Form3
+        </legend>
         <label>Enter your height:
           <input 
             type="number"
             name="Height"
             value={inputs.Height || ""}
-            onChange={handleChange}
+            onChange={handleInputChange}
             required
           />
         </label>
@@ -37,7 +38,7 @@ export const Form3 = ({ onSubmit, onBack, initialData}) => {
             type="number"
             name="Weight"
             value={inputs.Weight || ""}
-            onChange={handleChange}
+            onChange={handleInputChange}
             required
           />
         </label>
@@ -50,7 +51,7 @@ export const Form3 = ({ onSubmit, onBack, initialData}) => {
                       name="skin"
                       value="red"
                       checked={inputs.skin === "red"}
-                      onChange={handleChange}
+                      onChange={handleInputChange}
                       />
                       red
                   </label>
@@ -62,7 +63,7 @@ export const Form3 = ({ onSubmit, onBack, initialData}) => {
                       name="skin"
                       value="blue"
                       checked={inputs.skin === "blue"}
-                      onChange={handleChange}
+                      onChange={handleInputChange}
                       />
                       blue
                   </label>
@@ -74,7 +75,7 @@ export const Form3 = ({ onSubmit, onBack, initialData}) => {
                       name="skin"
                       value="green"
                       checked={inputs.skin === "green"}
-                      onChange={handleChange}
+                      onChange={handleInputChange}
                       />
                       green
                   </label>
@@ -86,7 +87,7 @@ export const Form3 = ({ onSubmit, onBack, initialData}) => {
                       name="skin"
                       value="white"
                       checked={inputs.skin === "white"}
-                      onChange={handleChange}
+                      onChange={handleInputChange}
                       />
                       white
                   </label>
@@ -94,7 +95,8 @@ export const Form3 = ({ onSubmit, onBack, initialData}) => {
           </ul>
         </label>
         <button onClick={handleBackClick}>Back</button>
-        <input type="submit" value="Next" disabled={Object.values(inputs).some(value => value === "")} />
+        <button type="submit">Next</button>
+        </fieldset>
       </form>
     );
   }

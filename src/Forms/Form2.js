@@ -5,29 +5,31 @@ export const Form2 = ({ onSubmit, onBack, initialData }) => {
 
     const [inputs, setInputs] = useState(initialData);
     
-    const handleChange = (event) => {
-      const name = event.target.name;
-      const value = event.target.value;
-      setInputs(values => ({ ...values, [name]: value }));
-    };
+    const handleInputChange = (e) => {
+        const { name, value } = e.target;
+        setInputs((prevInputs) => ({ ...prevInputs, [name]: value }));
+      };
     
-    const handleSubmit = (event) => {
-      event.preventDefault();
-      onSubmit(inputs);
-    };
-    const handleBackClick = (event) => {
-      event.preventDefault();
+      const handleSubmit = (e) => {
+        e.preventDefault();
+        onSubmit(inputs);
+      };
+    const handleBackClick = (e) => {
+      e.preventDefault();
       onBack();
     }
     return (
       <form onSubmit={handleSubmit}>
-        <h2>Form2</h2>
+        <fieldset>
+        <legend>
+            Form2
+        </legend>
         <label>Enter your name:
           <input 
             type="text"
             name="Name"
             value={inputs.Name || ""}
-            onChange={handleChange}
+            onChange={handleInputChange}
             required
           />
         </label>
@@ -36,7 +38,7 @@ export const Form2 = ({ onSubmit, onBack, initialData }) => {
             type="text"
             name="surName"
             value={inputs.surName || ""}
-            onChange={handleChange}
+            onChange={handleInputChange}
             required
           />
         </label>
@@ -45,12 +47,13 @@ export const Form2 = ({ onSubmit, onBack, initialData }) => {
             type="date"
             name="birthDate" 
             value={inputs.birthDate || ""}
-            onChange={handleChange}
+            onChange={handleInputChange}
             required
           />
         </label>
         <button onClick={handleBackClick}>Back</button>
-        <input type="submit" value="Next" disabled={Object.values(inputs).some(value => value === "")} />
+        <button type="submit">Next</button>
+        </fieldset>
       </form>
     );
   }

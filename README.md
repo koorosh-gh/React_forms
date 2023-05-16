@@ -10,12 +10,12 @@ This is a personal project focused on building a multi-step form with validation
 
 1. Clone the repository:
    ```
-   git clone https://github.com/koorosh-gh/react-forms.git
+   git clone https://github.com/koorosh-gh/react_forms.git
    ```
 
 2. Install dependencies:
    ```
-   cd react-forms-project
+   cd react_forms
    npm install
    ```
 
@@ -43,3 +43,4 @@ The development of this project was inspired by various online resources, tutori
 If you have any questions, feedback, or inquiries related to this project, feel free to contact me at [korolami42@gmail.com].
 
 Thank you for your interest and enjoy exploring the React Forms Project!
+
