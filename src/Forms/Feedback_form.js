@@ -4,53 +4,61 @@ import './forms.css';
 export const FeedbackForm = ({ onSubmit, onBack, initialData }) => {
   const { value, handleInputChange, handleBackClick } = useFormInput(initialData);
 
-  const handleFormSubmit = (e) => {
-    handleSubmit(e, value, onSubmit);
-  };
-
   return (
-    <form onSubmit={handleFormSubmit}>
+    <form onSubmit={ (e) => handleSubmit (e, value, onSubmit)}>
       <fieldset>
         <legend>Feedback Form</legend>
-        <label>
-          <span>Name:</span>
+        <div>
+        <label htmlFor='fdbckName'>
+          Name:
+        </label>
           <input
+          id='fdbckName'
           type="text"
           name="name"
           value={value.name}
           onChange={handleInputChange}
           required
           />
+        </div>
+        <div>
+        <label htmlFor='fdbckEmail'>
+          Email:
         </label>
-        <label>
-          <span>Email:</span>
           <input
+          id='fdbckEmail'
           type="text"
           name="email"
           value={value.email}
           onChange={handleInputChange}
           required
           />
+        </div>
+        <div>
+        <label htmlFor='fdbckRating'>
+          Rating:
         </label>
-        <label>
-          <span>Rating:</span>
           <input
+          id='fdbckRating'
           type="text"
           name="rating"
           value={value.rating}
           onChange={handleInputChange}
           required
           />
+        </div>
+        <div>
+        <label htmlFor='fdbckComment'>
+          Comments:
         </label>
-        <label>
-          <span>Comments:</span>
           <textarea
+          id='fdbckComment'
           name="comments"
           value={value.comments}
           onChange={handleInputChange}
           required
           />
-        </label>
+        </div>
         <button onClick={(e) => handleBackClick(e, onBack)}>Back</button>
         <button type="submit">Next</button>
      </fieldset>

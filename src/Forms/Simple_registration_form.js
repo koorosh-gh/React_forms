@@ -9,46 +9,58 @@ export const SimpleRegistrationForm = ({ onSubmit, onBack, initialData }) => {
     <form onSubmit={(e) => handleSubmit(e, value, onSubmit)}>
       <fieldset>
         <legend>Simple registration form</legend>
-        <label>
+        <div>
+        <label htmlFor='smpRegUserName'>
           Username:
+        </label>
           <input
+          id='smpRegUserName'
           type="text"
           name="username"
           value={value.username || ''}
           onChange={handleInputChange}
           required
           />
-        </label>
-        <label>
+        </div>
+        <div>
+        <label htmlFor='smpRegEmail'>
           Email:
+        </label>
           <input
+          id='smpRegEmail'
           type="email"
           name="email"
           value={value.email || ''}
           onChange={handleInputChange}
           required
           />
-        </label>
-        <label>
+        </div>
+        <div>
+        <label htmlFor='smpRegPassword'>
           Password:
+        </label>
           <input
+          id='smpRegPassword'
           type="password"
           name="password"
           value={value.password || ''}
           onChange={handleInputChange}
           required
           />
-        </label>
-        <label>
+        </div>
+        <div>
+        <label htmlFor='smpRegConfirmPassword'>
           Confirm password:
+        </label>
           <input
+          id='smpRegConfirmPassword'
           type="password"
           name="confirmPassword"
           value={value.confirmPassword || ''}
           onChange={handleInputChange}
           required
           />
-        </label>
+        </div>
         <button onClick={(e) => handleBackClick(e, onBack)}>Back</button>
         <button type="submit">Next</button>
       </fieldset>

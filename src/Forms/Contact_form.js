@@ -9,55 +9,70 @@ export const ContactForm = ({ onSubmit, initialData }) => {
     <form onSubmit={(e) => handleSubmit(e, value, onSubmit)}>
       <fieldset>
         <legend>Contact Form</legend>
-        <label>
+        <div>
+        <label htmlFor='cntctFullName'>
           Full name:
-          <input
-            type="text"
-            name="fullName"
-            value={value.fullName || ''}
-            onChange={handleInputChange}
-            required
-          />
         </label>
-        <label>
+          <input
+          id='cntctFullName'
+          type="text"
+          name="fullName"
+          value={value.fullName || ''}
+          onChange={handleInputChange}
+          required
+          />
+        </div>
+        <div>
+        <label htmlFor='cntctEmail'>
           Email:
-          <input
-            type="email"
-            name="Email"
-            value={value.Email || ''}
-            onChange={handleInputChange}
-            required
-          />
         </label>
-        <label>
-          Phone:
           <input
+          id='cntctEmail'
+          type="email"
+          name="Email"
+          value={value.Email || ''}
+          onChange={handleInputChange}
+          required
+          />
+        </div>
+        <div>
+        <label htmlFor='cntctPhone'>
+          Phone:
+        </label>
+          <input
+          id='cntctPhone'
           type="tel"
           name="phoneNumber"
           value={value.phoneNumber || ''}
           onChange={handleInputChange}
           required
           />
-        </label>
-        <label>
+        </div>
+        <div>
+        <label htmlFor='cntctSubject'>
           Subject:
+        </label>
           <input
+          id='cntctSubject'
           type="text"
           name="subject"
           value={value.subject || ''}
           onChange={handleInputChange}
           required
           />
-        </label>
-        <label>
+        </div>
+        <div>
+        <label htmlFor='cntctMessage'>
           Message:
+        </label>
           <textarea
+          id='cntctMessage'
           name="message"
           value={value.message || ''}
           onChange={handleInputChange}
           required
           />
-        </label>
+        </div>
         <button type="submit">Next</button>
       </fieldset>
     </form>

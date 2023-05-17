@@ -4,16 +4,16 @@ import './forms.css';
 export const JobApplicationForm = ({ onSubmit, onBack, initialData }) => {
   const { value, handleInputChange, handleBackClick } = useFormInput(initialData);
 
-  const handleFormSubmit = (e) => {
-    handleSubmit(e, value, onSubmit);
-  };
-
   return (
-    <form onSubmit={handleFormSubmit}>
+    <form onSubmit={ (e) => handleSubmit (e, value, onSubmit)}>
       <fieldset>
-        <legend>Job Application Form</legend>
+        <legend>
+          Job Application Form
+        </legend>
         <div>
-          <label htmlFor="jobAppFullName">Full Name:</label>
+          <label htmlFor="jobAppFullName">
+            Full Name:
+          </label>
           <input
           id="jobAppFullName"
           name="fullName"
