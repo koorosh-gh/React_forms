@@ -10,43 +10,52 @@ function App() {
   const [currentFormIndex, setCurrentFormIndex] = useState(1);
   const [formData, setFormData] = useState([]);
 
+  const formNames = [
+    'Contact Form',
+    'Simple Registration Form',
+    'Advanced Registration Form',
+    'Payment Form',
+    'Feedback Form',
+    'Job Application Form',
+  ];
+
   const handleFormSubmit = (data) => {
-    const isFormComplete = Object.values(data).every(value => value !== "");
+    const isFormComplete = Object.values(data).every((value) => value !== '');
     if (isFormComplete) {
       if (currentFormIndex <= formData.length) {
         setFormData((prevData) => {
           const newData = [...prevData];
-          newData[currentFormIndex - 1] = data;
+          newData[currentFormIndex - 1] = { ...data, formName: formNames[currentFormIndex - 1] };
           return newData;
         });
-      } else{
-        setFormData((prevData) => [...prevData, data]);
+      } else {
+        setFormData((prevData) => [...prevData, { ...data, formName: formNames[currentFormIndex - 1] }]);
       }
-      setCurrentFormIndex(prevIndex => prevIndex + 1);
+      setCurrentFormIndex((prevIndex) => prevIndex + 1);
     } else {
-      alert("Please fill out all the fields");
+      alert('Please fill out all the fields');
     }
   };
 
   const handleBack = () => {
-    setCurrentFormIndex(prevIndex => prevIndex - 1);
+    setCurrentFormIndex((prevIndex) => prevIndex - 1);
   };
 
   const renderForm = () => {
     const initialData = formData[currentFormIndex - 1] || {};
     switch (currentFormIndex) {
       case 1:
-        return <ContactForm onSubmit={handleFormSubmit} initialData={initialData}/>;
+        return <ContactForm onSubmit={handleFormSubmit} initialData={initialData} />;
       case 2:
-        return <SimpleRegistrationForm onSubmit={handleFormSubmit} onBack={handleBack} initialData={initialData}/>;
+        return <SimpleRegistrationForm onSubmit={handleFormSubmit} onBack={handleBack} initialData={initialData} />;
       case 3:
-        return <AdvancedRegistrationForm onSubmit={handleFormSubmit} onBack={handleBack} initialData={initialData}/>;
+        return <AdvancedRegistrationForm onSubmit={handleFormSubmit} onBack={handleBack} initialData={initialData} />;
       case 4:
-        return <PaymentForm onSubmit={handleFormSubmit} onBack={handleBack} initialData={initialData}/>;
+        return <PaymentForm onSubmit={handleFormSubmit} onBack={handleBack} initialData={initialData} />;
       case 5:
-        return <FeedbackForm onSubmit={handleFormSubmit} onBack={handleBack} initialData={initialData}/>;
+        return <FeedbackForm onSubmit={handleFormSubmit} onBack={handleBack} initialData={initialData} />;
       case 6:
-        return <JobApplicationForm onSubmit={handleFormSubmit} onBack={handleBack} initialData={initialData}/>;
+        return <JobApplicationForm onSubmit={handleFormSubmit} onBack={handleBack} initialData={initialData} />;
       default:
         return null;
     }
@@ -58,7 +67,7 @@ function App() {
       <h3>Form Data:</h3>
       <ul>
         {formData.map((data, index) => (
-          <li key={index}>{`Form ${index + 1}: ${JSON.stringify(data)}`}</li>
+          <li key={index}>{`${data.formName}: ${JSON.stringify(data)}`}</li>
         ))}
       </ul>
     </div>
