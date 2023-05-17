@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import { Form1 } from './Forms/Form1';
-import { Form2 } from './Forms/Form2';
-import { Form3 } from './Forms/Form3';
-import { Form4 } from './Forms/Form4';
-import { Form5 } from './Forms/Form5';
+import { ContactForm } from './Forms/Contact_form';
+import { SimpleRegistrationForm } from './Forms/Simple_registration_form';
+import { AdvancedRegistrationForm } from './Forms/Advanced_registration_form';
+import { PaymentForm } from './Forms/Payment_form';
+import { FeedbackForm } from './Forms/Feedback_form';
+import { JobApplicationForm } from './Forms/Job_application_form';
 
 function App() {
   const [currentFormIndex, setCurrentFormIndex] = useState(1);
@@ -35,15 +36,17 @@ function App() {
     const initialData = formData[currentFormIndex - 1] || {};
     switch (currentFormIndex) {
       case 1:
-        return <Form1 onSubmit={handleFormSubmit} initialData={initialData}/>;
+        return <ContactForm onSubmit={handleFormSubmit} initialData={initialData}/>;
       case 2:
-        return <Form2 onSubmit={handleFormSubmit} onBack={handleBack} initialData={initialData}/>;
+        return <SimpleRegistrationForm onSubmit={handleFormSubmit} onBack={handleBack} initialData={initialData}/>;
       case 3:
-        return <Form3 onSubmit={handleFormSubmit} onBack={handleBack} initialData={initialData}/>;
+        return <AdvancedRegistrationForm onSubmit={handleFormSubmit} onBack={handleBack} initialData={initialData}/>;
       case 4:
-        return <Form4 onSubmit={handleFormSubmit} onBack={handleBack} initialData={initialData}/>;
+        return <PaymentForm onSubmit={handleFormSubmit} onBack={handleBack} initialData={initialData}/>;
       case 5:
-        return <Form5 onSubmit={handleFormSubmit} onBack={handleBack} initialData={initialData}/>;
+        return <FeedbackForm onSubmit={handleFormSubmit} onBack={handleBack} initialData={initialData}/>;
+      case 6:
+        return <JobApplicationForm onSubmit={handleFormSubmit} onBack={handleBack} initialData={initialData}/>;
       default:
         return null;
     }
