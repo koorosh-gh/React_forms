@@ -27,7 +27,7 @@ export const FeedbackForm = ({ onSubmit, onBack, initialData }) => {
         </label>
           <input
           id='fdbckEmail'
-          type="text"
+          type="email"
           name="email"
           value={value.email}
           onChange={handleInputChange}
@@ -36,12 +36,14 @@ export const FeedbackForm = ({ onSubmit, onBack, initialData }) => {
         </div>
         <div>
         <label htmlFor='fdbckRating'>
-          Rating:
+          Rating(0-10):
         </label>
           <input
           id='fdbckRating'
-          type="text"
+          type="number"
           name="rating"
+          min="0"
+          max="10"
           value={value.rating}
           onChange={handleInputChange}
           required

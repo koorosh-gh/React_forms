@@ -27,7 +27,7 @@ export const PaymentForm = ({ onSubmit, onBack, initialData }) => {
         </label>
           <input
           id='pymntCardNumber'
-          type="text"
+          type="number"
           name="cardNumber"
           value={value.cardNumber || ""}
           onChange={handleInputChange}
@@ -35,27 +35,14 @@ export const PaymentForm = ({ onSubmit, onBack, initialData }) => {
           />
         </div>
         <div>
-        <label htmlFor='pymntExpMonth'>
-          Expiration Month:
+        <label htmlFor='pymntExpDate'>
+          Expiration Date:
         </label>
           <input
-          id='pymntExpMonth'
-          type="text"
-          name="expirationMonth"
-          value={value.expirationMonth || ""}
-          onChange={handleInputChange}
-          required
-          />
-        </div>
-        <div>
-        <label htmlFor='pymntExpYear'>
-          Expiration Year:
-        </label>
-          <input
-          id='pymntExpYear'
-          type="text"
-          name="expirationYear"
-          value={value.expirationYear || ""}
+          id='pymntExpDate'
+          type="month"
+          name="expirationDate"
+          value={value.expirationDate || ""}
           onChange={handleInputChange}
           required
           />

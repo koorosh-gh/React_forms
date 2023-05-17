@@ -109,7 +109,7 @@ export const AdvancedRegistrationForm = ({ onSubmit, onBack, initialData }) => {
                 </label>
                     <input
                     id="advRegZipCode"
-                    type="text"
+                    type="number"
                     name="zipCode"
                     value={value.zipCode || ""}
                     onChange={handleInputChange}

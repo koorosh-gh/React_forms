@@ -29,8 +29,8 @@ export const ContactForm = ({ onSubmit, initialData }) => {
           <input
           id='cntctEmail'
           type="email"
-          name="Email"
-          value={value.Email || ''}
+          name="email"
+          value={value.email || ''}
           onChange={handleInputChange}
           required
           />

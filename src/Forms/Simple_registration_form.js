@@ -43,6 +43,7 @@ export const SimpleRegistrationForm = ({ onSubmit, onBack, initialData }) => {
           id='smpRegPassword'
           type="password"
           name="password"
+          minLength="8"
           value={value.password || ''}
           onChange={handleInputChange}
           required
@@ -56,6 +57,7 @@ export const SimpleRegistrationForm = ({ onSubmit, onBack, initialData }) => {
           id='smpRegConfirmPassword'
           type="password"
           name="confirmPassword"
+          minLength="8"
           value={value.confirmPassword || ''}
           onChange={handleInputChange}
           required

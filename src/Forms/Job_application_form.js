@@ -18,7 +18,7 @@ export const JobApplicationForm = ({ onSubmit, onBack, initialData }) => {
           id="jobAppFullName"
           name="fullName"
           type="text"
-          value={value.fullName}
+          value={value.fullName || ""}
           onChange={handleInputChange}
           required
           />
@@ -29,7 +29,7 @@ export const JobApplicationForm = ({ onSubmit, onBack, initialData }) => {
           id="jobAppEmail"
           name="email"
           type="email"
-          value={value.email}
+          value={value.email || ""}
           onChange={handleInputChange}
           required
           />
@@ -38,19 +38,9 @@ export const JobApplicationForm = ({ onSubmit, onBack, initialData }) => {
           <label htmlFor="jobAppPhone">Phone Number:</label>
           <input
           id="jobAppPhone"
-          name="phone"
+          name="phoneNumber"
           type="tel"
-          value={value.phone}
-          onChange={handleInputChange}
-          required
-          />
-        </div>
-        <div>
-          <label htmlFor="jobAppDescription">Description:</label>
-          <textarea
-          id="jobAppDescription"
-          name="description"
-          value={value.description}
+          value={value.phoneNumber || ""}
           onChange={handleInputChange}
           required
           />
@@ -61,7 +51,18 @@ export const JobApplicationForm = ({ onSubmit, onBack, initialData }) => {
           id="jobAppCVResume"
           name="cv"
           type="file"
-          value={value.cv}
+          accept=".pdf"
+          value={value.cv || ""}
+          onChange={handleInputChange}
+          required
+          />
+        </div>
+        <div>
+          <label htmlFor="jobAppDescription">Description:</label>
+          <textarea
+          id="jobAppDescription"
+          name="description"
+          value={value.description || ""}
           onChange={handleInputChange}
           required
           />
